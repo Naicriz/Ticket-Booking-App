@@ -14,14 +14,14 @@ class TicketView extends StatelessWidget {
     final size = AppLayout.getSize(context);
 
     return SizedBox(
-      width: size.width,
+      width: size.width * 0.85,
       height: 200,
       child: Container(
-        margin: const EdgeInsets.only(left: 16),
+        margin: const EdgeInsets.only(right: 16),
         child: Column(
           children: [
             /*
-            show the blue part of the card/ticket
+            show the top blue part of the card/ticket
             */
             Container(
               decoration: const BoxDecoration(
@@ -38,7 +38,7 @@ class TicketView extends StatelessWidget {
                           style: Styles.headLineStyle3
                               .copyWith(color: Colors.white)),
                       Expanded(child: Container()),
-                      ContainerCus1(),
+                      const ContainerCus1(),
                       Expanded(
                         child: Stack(
                           children: [
@@ -46,21 +46,23 @@ class TicketView extends StatelessWidget {
                               height: 24,
                               child: LayoutBuilder(
                                 builder: (BuildContext context,
-                                    BoxConstraints contraints) {
+                                    BoxConstraints constraints) {
                                   if (kDebugMode) {
-                                    print("The width is ${contraints.maxWidth}");
+                                    print(
+                                        "The width is ${constraints.maxWidth}");
                                   }
                                   return Flex(
                                     direction: Axis.horizontal,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: List.generate(
-                                      (contraints.maxWidth ~/ 6).floor(),
-                                          (index) => const SizedBox(
+                                      (constraints.maxWidth ~/ 6).floor(),
+                                      (index) => const SizedBox(
                                         width: 3,
                                         height: 1,
                                         child: DecoratedBox(
-                                            decoration:
-                                            BoxDecoration(color: Colors.white)),
+                                            decoration: BoxDecoration(
+                                                color: Colors.white)),
                                       ),
                                     ),
                                   );
@@ -68,13 +70,14 @@ class TicketView extends StatelessWidget {
                               ),
                             ),
                             const Center(
-                              child: Icon(FluentSystemIcons.ic_fluent_airplane_filled,
+                              child: Icon(
+                                  FluentSystemIcons.ic_fluent_airplane_filled,
                                   color: Colors.white),
                             ),
-                          ] ,
+                          ],
                         ),
                       ),
-                      ContainerCus1(),
+                      const ContainerCus1(),
                       Expanded(child: Container()),
                       Text('ROMA',
                           style: Styles.headLineStyle3
@@ -87,12 +90,19 @@ class TicketView extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 100,
-                        child: Text('Santiago', style: Styles.headLineStyle4.copyWith(color: Colors.white)),
+                        child: Text('Santiago',
+                            style: Styles.headLineStyle4
+                                .copyWith(color: Colors.white)),
                       ),
-                      Text("12H 30M", style: Styles.headLineStyle4.copyWith(color: Colors.white)),
+                      Text("12H 30M",
+                          style: Styles.headLineStyle4
+                              .copyWith(color: Colors.white)),
                       SizedBox(
                         width: 100,
-                        child: Text('Roma', textAlign: TextAlign.end, style: Styles.headLineStyle4.copyWith(color: Colors.white)),
+                        child: Text('Roma',
+                            textAlign: TextAlign.end,
+                            style: Styles.headLineStyle4
+                                .copyWith(color: Colors.white)),
                       ),
                     ],
                   )
@@ -100,38 +110,49 @@ class TicketView extends StatelessWidget {
               ),
             ),
             /*
-            show the orange part of the card/ticket
+            show the middle orange part of the card/ticket
              */
             Container(
               color: Styles.orangeColor,
               child: Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                     width: 10,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(10)
-                        ),
+                            topRight: Radius.circular(10),
+                            bottomRight: Radius.circular(10)),
                       ),
                     ),
                   ),
-                  Expanded(child: Flex(
-                    direction: Axis.horizontal,
-                    children: List.generate(5, (index) => SizedBox(
-                      width: 5,
-                      height: 1,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.white
-                        ),
-                      ),
-                    ))
+                  Expanded(
+                      child: Padding(
+                    padding: const EdgeInsets.all(11.0),
+                    child: LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        return Flex(
+                          direction: Axis.horizontal,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          children: List.generate(
+                              (constraints.constrainWidth() / 15).floor(),
+                              (index) => const SizedBox(
+                                    width: 5,
+                                    height: 1,
+                                    child: DecoratedBox(
+                                      decoration:
+                                          BoxDecoration(color: Colors.white),
+                                    ),
+                                  )),
+                        );
+                      },
+                    ),
                   )),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                     width: 10,
                     child: DecoratedBox(
@@ -139,14 +160,70 @@ class TicketView extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(10),
-                            bottomLeft: Radius.circular(10)
-                        ),
+                            bottomLeft: Radius.circular(10)),
                       ),
                     ),
                   )
                 ],
               ),
             ),
+            /*
+            show the bottom orange part of the card/ticket
+             */
+            Container(
+              decoration: const BoxDecoration(
+                  color: Color(0xFFF87050),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(21),
+                      bottomRight: Radius.circular(21))),
+              padding: const EdgeInsets.only(
+                  left: 16, top: 10, right: 16, bottom: 16),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("1 MAY",
+                              style: Styles.headLineStyle3
+                                  .copyWith(color: Colors.white)),
+                          const Gap(5),
+                          Text("DATE",
+                              style: Styles.headLineStyle4
+                                  .copyWith(color: Colors.white)),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("O8:00 AM",
+                              style: Styles.headLineStyle3
+                                  .copyWith(color: Colors.white)),
+                          const Gap(5),
+                          Text("Departure time",
+                              style: Styles.headLineStyle4
+                                  .copyWith(color: Colors.white)),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("23",
+                              style: Styles.headLineStyle3
+                                  .copyWith(color: Colors.white)),
+                          const Gap(5),
+                          Text("Number",
+                              style: Styles.headLineStyle4
+                                  .copyWith(color: Colors.white)),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
