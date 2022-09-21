@@ -30,14 +30,16 @@ class HomeScreen extends StatelessWidget {
                           Text('Book Tickets', style: Styles.headLineStyle1)
                         ]),
                     Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            image: const DecorationImage(
-                                fit: BoxFit.fitHeight,
-                                image: AssetImage('assets/images/img_1.png'))))
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        image: const DecorationImage(
+                            fit: BoxFit.fitHeight,
+                            image: AssetImage('assets/images/img_1.png')),
+                      ),
+                    ),
                   ],
                 ),
                 const Gap(25),
@@ -83,6 +85,25 @@ class HomeScreen extends StatelessWidget {
                 TicketView(),
                 TicketView(),
                 TicketView(),
+              ],
+            ),
+          ),
+          const Gap(15),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Hotels', style: Styles.headLineStyle2),
+                InkWell(
+                    onTap: () {
+                      if (kDebugMode) {
+                        print("You are tapped");
+                      }
+                    },
+                    child: Text('View all',
+                        style: Styles.textStyle
+                            .copyWith(color: Styles.primaryColor)))
               ],
             ),
           )
