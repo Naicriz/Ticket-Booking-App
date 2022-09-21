@@ -36,34 +36,36 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(child: _widgetOptions[_selectedIndex]),
-        bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _selectedIndex,
-            onTap:
-                _onItemTapped, // Al hacer clic en BottomNavigationBar, sabe cuál es el index del método definido.
-            elevation: 20,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            selectedItemColor: Colors.blueGrey,
-            type: BottomNavigationBarType.shifting, // or .fixed
-            unselectedItemColor: const Color(0xFF526480),
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
-                  activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
-                  label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
-                  activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
-                  label: 'Search'),
-              BottomNavigationBarItem(
-                  icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
-                  activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
-                  label: 'Pedidos'),
-              BottomNavigationBarItem(
-                  icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
-                  activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
-                  label: 'Menú')
-            ]));
+      body: Center(child: _widgetOptions[_selectedIndex]),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap:
+            _onItemTapped, // Al hacer clic en BottomNavigationBar, sabe cuál es el index del método definido.
+        elevation: 20,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.blueGrey,
+        type: BottomNavigationBarType.shifting, // or .fixed
+        unselectedItemColor: const Color(0xFF526480),
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
+              label: 'Search'),
+          BottomNavigationBarItem(
+              icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
+              label: 'Pedidos'),
+          BottomNavigationBarItem(
+              icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+              label: 'Menú')
+        ],
+      ),
+    );
   }
 }
