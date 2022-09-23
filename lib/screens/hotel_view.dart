@@ -5,10 +5,12 @@ import '../utils/app_layout.dart';
 import '../utils/app_styles.dart';
 
 class HotelView extends StatelessWidget {
-  const HotelView({super.key});
+  final Map<String, dynamic> hotel;
+  const HotelView({Key? key, required this.hotel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    //print("Hotel price is ${hotel['price']}");
     final size = AppLayout.getSize(context);
     return Container(
       width: size.width * 0.6,
@@ -31,11 +33,11 @@ class HotelView extends StatelessWidget {
         Container(
           height: 180,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(21),
+            borderRadius: BorderRadius.circular(12),
             color: Styles.primaryColor,
-            image: const DecorationImage(
+            image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage("assets/images/one.png"),
+              image: AssetImage("assets/images/${hotel['image']}"),
             ),
           ),
         ),

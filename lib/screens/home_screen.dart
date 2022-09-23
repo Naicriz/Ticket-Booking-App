@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticket_booking_app/screens/hotel_view.dart';
 import 'package:ticket_booking_app/screens/ticket_view.dart';
+import 'package:ticket_booking_app/utils/app_info_list.dart';
 import 'package:ticket_booking_app/utils/app_styles.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -97,14 +98,15 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Text('Hotels', style: Styles.headLineStyle2),
                 InkWell(
-                    onTap: () {
-                      if (kDebugMode) {
-                        print("You are tapped");
-                      }
-                    },
-                    child: Text('View all',
-                        style: Styles.textStyle
-                            .copyWith(color: Styles.primaryColor)))
+                  onTap: () {
+                    if (kDebugMode) {
+                      print("Tap tap tap");
+                    }
+                  },
+                  child: Text('View all',
+                      style: Styles.textStyle
+                          .copyWith(color: Styles.primaryColor)),
+                )
               ],
             ),
           ),
@@ -113,11 +115,7 @@ class HomeScreen extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(left: 20),
             child: Row(
-              children: const [
-                HotelView(),
-                HotelView(),
-                HotelView(),
-              ],
+              children: hotelList.map((e) => HotelView(hotel: e)).toList(),
             ),
           ),
         ],
